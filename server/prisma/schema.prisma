@@ -1,0 +1,19 @@
+// prisma/schema.prisma
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Link {
+  id            Int      @id @default(autoincrement())
+  shortCode     String   @unique
+  originalUrl   String
+  clicks        Int      @default(0)
+  lastClickedAt DateTime?
+  createdAt     DateTime @default(now())
+}
