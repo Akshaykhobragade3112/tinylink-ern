@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import LinkForm from '../components/LinkForm';
 import LinksTable from '../components/LinksTable';
+import { API_BASE } from '../config';
 
 export type LinkRecord = {
   id: number;
@@ -19,7 +20,7 @@ export default function Dashboard() {
   async function load() {
     try {
       setLoading(true);
-      const res = await fetch('/api/links');
+      const res = await fetch(`${API_BASE}/api/links`);
       if (!res.ok) throw new Error('Failed to load links');
       const data = await res.json();
       setLinks(data);

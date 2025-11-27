@@ -1,5 +1,7 @@
 import React from 'react';
 import type { LinkRecord } from '../pages/Dashboard';
+import { API_BASE, SHORT_BASE } from '../config';
+
 
 type Props = {
   links: LinkRecord[];
@@ -14,7 +16,7 @@ export default function LinksTable({ links, setLinks }: Props) {
     if (!confirm(`Delete ${code}?`)) return;
     setLoadingDelete(id);
     try {
-      const res = await fetch(`/api/links/${code}`, { method: 'DELETE' });
+      const res = await fetch(`${API_BASE}/api/links/${code}`, { method: 'DELETE' });
       if (res.ok) {
         setLinks((l) => l.filter((x) => x.shortCode !== code));
       } else {
@@ -71,7 +73,7 @@ export default function LinksTable({ links, setLinks }: Props) {
               filtered.map((l) => (
                 <tr key={l.id}>
                   <td>
-                    <a className="link" href={`/${l.shortCode}`}>
+                    <a className="link" href={`${SHORT_BASE}/${l.shortCode}`}>
                       {l.shortCode}
                     </a>
                     <div className="hostname">

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import type { LinkRecord } from './Dashboard';
+import { API_BASE } from '../config';
 
 export default function Stats() {
   const { code } = useParams();
@@ -13,7 +14,7 @@ export default function Stats() {
 
     (async () => {
       try {
-        const res = await fetch(`/api/links/${code}`);
+        const res = await fetch(`${API_BASE}/api/links/${code}`);
         if (res.status === 404) {
           setLink(null);
           setError('Link not found');

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import type { LinkRecord } from '../pages/Dashboard';
+import { API_BASE, SHORT_BASE } from '../config';
+
 
 const CODE_REGEX = /^[A-Za-z0-9]{6,8}$/;
 
@@ -43,7 +45,7 @@ export default function LinkForm({ onCreated }: Props) {
 
     setLoading(true);
     try {
-      const res = await fetch('/api/links', {
+      const res = await fetch(`${API_BASE}/api/links`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ url, code: code || undefined }),
