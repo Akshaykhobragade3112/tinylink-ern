@@ -2,8 +2,8 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import linksRouter from '../routes/links';
-import prisma from '../lib/prisma';
+import linksRouter from './routes/links';
+import prisma from './lib/prisma';
 import { Request, Response } from 'express';
 
 dotenv.config();
