@@ -55,7 +55,7 @@ export default function LinkForm({ onCreated }: Props) {
       if (!res.ok) {
         setMsg({ type: 'error', text: data?.error || 'Failed to create link' });
       } else {
-        setMsg({ type: 'success', text: `Created ${data.shortCode}` });
+        setMsg({ type: 'success', text: `Created ${SHORT_BASE}/${data.shortCode}` });
         setUrl('');
         setCode('');
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import LinkForm from '../components/LinkForm';
 import LinksTable from '../components/LinksTable';
 import { API_BASE } from '../config';
